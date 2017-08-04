@@ -2,6 +2,7 @@ import Collapsible from 'react-collapsible';
 import * as React from "react";
 import Feature from './Feature';
 import './Application.css'
+import * as PropTypes from 'prop-types'
 
 export default class Application extends React.Component{
 
@@ -23,5 +24,5 @@ export default class Application extends React.Component{
 }
 
 Application.propTypes = {
-    applicationName: React.PropTypes.string.isRequired
+    applicationName: PropTypes.string.isRequired
 };

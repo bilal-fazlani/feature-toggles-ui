@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import './App.css';
-import Application from "./Components/Application";
+import AppLayout from "./components/AppLayout/AppLayout";
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {connect} from "react-redux";
+import {loadTogglesAsync} from "./actionCreators/featureToggles";
+
 
 class App extends Component {
-  render() {
+
+    componentDidMount(){
+        this.props.loadTogglesAsync();
+    }
+
+    render() {
     return (
-      <div className="App">
-          <Application applicationName="engage-web" />
-          <Application applicationName="engage-backend" />
-          <Application applicationName="pricing-backend" />
+        <div className="App">
+          <MuiThemeProvider >
+            <AppLayout />
+          </MuiThemeProvider>
       </div>
     );
-  }
+    }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+    loadTogglesAsync : () => dispatch(loadTogglesAsync())
+});
+
+export default connect(()=> ({}), mapDispatchToProps)(App);
+

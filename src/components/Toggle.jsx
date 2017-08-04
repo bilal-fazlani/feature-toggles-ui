@@ -1,5 +1,6 @@
 import * as React from "react";
 import './Toggle.css'
+import * as PropTypes from 'prop-types'
 
 export default class Toggle extends React.Component{
 
@@ -24,6 +25,6 @@ toggle(){
 }
 
 Toggle.propTypes = {
-  on: React.PropTypes.bool.isRequired,
-  env: React.PropTypes.string.isRequired
+  on: PropTypes.bool.isRequired,
+  env: PropTypes.string.isRequired
 };

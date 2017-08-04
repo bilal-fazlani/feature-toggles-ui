@@ -1,0 +1,22 @@
+.border{
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.toggle-button{
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-button > div {
+    padding: 3px;
+}
+
+.toggle-button > .on{
+    background-color: greenyellow;
+}
+
+.toggle-button > .off{
+    background-color: indianred;
+}

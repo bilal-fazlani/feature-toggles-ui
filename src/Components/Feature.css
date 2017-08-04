@@ -1,0 +1,23 @@
+
+.border{
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.toggle-row{
+    margin: 1em;
+}
+
+.feature-name{
+    text-align: left;
+    padding: 0.5em;
+    font-size: 1.2em;
+}
+
+.environments{
+    display: flex;
+}
+
+
+
+

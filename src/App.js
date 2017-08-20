@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AppLayout from "./components/AppLayout/AppLayout";
+import AppLayout from "./components/AppLayout";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {connect} from "react-redux";

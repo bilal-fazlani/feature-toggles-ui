@@ -1,8 +1,8 @@
 import {Drawer, MenuItem} from "material-ui";
 import * as React from "react";
 import {connect} from "react-redux";
-import {closeSidebar, setSidebar} from "../../actionCreators/sidebar";
-import switchApplication from "../../actionCreators/activeApplication";
+import {closeSidebar, setSidebar} from "../actionCreators/sidebar";
+import switchApplication from "../actionCreators/activeApplication";
 
 class Sidebar extends React.Component{
 

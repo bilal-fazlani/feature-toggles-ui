@@ -16,8 +16,8 @@ export class Feature extends React.Component {
             </div>
             <div className="environments">
                 {environmentNames.map(env => <Toggle key={env}
-                                                     on={this.props.environments[env]}
-                                                     text={env}
+                                                     environment={env}
+                                                     featureName={this.props.featureName}
                                                      />)}
             </div>
         </div>

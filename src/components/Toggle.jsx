@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 export class Toggle extends React.Component{
 
     render(){
-        return <div className="toggle-button border">
+        return <div className="toggle-button">
             <div className={this.props.on? "on" : "off"}>
                 {this.props.environment}
             </div>

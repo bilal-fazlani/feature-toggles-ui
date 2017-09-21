@@ -3,13 +3,13 @@ import AppLayout from "./components/AppLayout";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {connect} from "react-redux";
-import {loadTogglesAsync} from "./actionCreators/featureToggles";
+import {loadDataAsync} from "./actionCreators/featureToggles";
 
 
 class App extends Component {
 
     componentDidMount(){
-        this.props.loadTogglesAsync();
+        this.props.loadDataAsync();
     }
 
     render() {
@@ -24,7 +24,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    loadTogglesAsync : () => dispatch(loadTogglesAsync())
+    loadDataAsync : () => dispatch(loadDataAsync())
 });
 
 export default connect(()=> ({}), mapDispatchToProps)(App);

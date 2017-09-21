@@ -4,8 +4,10 @@ import Toggle from "./Toggle";
 import * as PropTypes from 'prop-types'
 import {connect} from "react-redux";
 
-export class Feature extends React.Component{
-    render(){
+export class Feature extends React.Component {
+    render() {
+        const environmentNames = Object.keys(this.props.environments);
+
         return <div className="toggle-row">
             <div className="feature-name ">
                 <span>
@@ -13,19 +15,25 @@ export class Feature extends React.Component{
                 </span>
             </div>
             <div className="environments">
-                {this.props.environments.map(env=><Toggle env={env} featureName={this.props.featureName} />)}
+                {environmentNames.map(env => <Toggle key={env}
+                                                     on={this.props.environments[env]}
+                                                     text={env}
+                                                     />)}
             </div>
         </div>
-        }
     }
+}
 
 Feature.propTypes = {
-    featureName : PropTypes.string.isRequired
+    featureName: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+
+    const environmentValues = state.applications[state.activeApplication][ownProps.featureName];
+
     return {
-        environments: Object.keys(state.featureToggles.data[ownProps.featureName])
+        environments: environmentValues
     };
 }
 

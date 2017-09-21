@@ -1,9 +1,8 @@
 import * as React from "react";
 import './Toggle.css'
 import * as PropTypes from 'prop-types'
-import {connect} from "react-redux";
 
-export class Toggle extends React.Component{
+export default class Toggle extends React.Component{
 
     constructor(props){
         super(props);
@@ -14,7 +13,7 @@ export class Toggle extends React.Component{
     render(){
         return <div className="toggle-button border" onClick={this.toggle}>
             <div className={this.state.on? "on" : "off"}>
-                {this.props.env}
+                {this.props.text}
             </div>
         </div>
     }
@@ -25,14 +24,6 @@ export class Toggle extends React.Component{
 }
 
 Toggle.propTypes = {
-    env: PropTypes.string.isRequired,
-    featureName : PropTypes.string.isRequired
+    on: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
 };
-
-function mapStateToProps(state, ownProps) {
-    return {
-        on : state.featureToggles.data[ownProps.featureName][ownProps.env]
-    }
-}
-
-export default connect(mapStateToProps)(Toggle);

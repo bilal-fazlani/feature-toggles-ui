@@ -13,7 +13,7 @@ class FeatureTogglesPage extends React.Component{
 
 function mapStateToProps(state) {
     return {
-        features: Object.keys(state.featureToggles.data)
+        features: state.activeApplication ? Object.keys(state.applications[state.activeApplication]) : []
     }
 }
 

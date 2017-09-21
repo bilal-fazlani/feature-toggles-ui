@@ -33,10 +33,13 @@ class Sidebar extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => ({
-    open: state.layout.sidebar,
-    applications : Object.keys(state.featureToggles.data)
-});
+const mapStateToProps = (state) => {
+    console.info('state', state);
+    return {
+        open: state.layout.sidebar,
+        applications : Object.keys(state.applications)
+    };
+};
 
 const mapDispatchToProps = (dispatch) => ({
     closeSidebar : () => dispatch(closeSidebar()),

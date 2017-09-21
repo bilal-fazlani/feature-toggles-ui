@@ -9,21 +9,8 @@ export default function configureStore() {
         layout: {
             sidebar: false
         },
-        featureToggles:{
-            loaded: false,
-            data : {
-                "hello world" : {
-                    "dev" : true,
-                    "qa" : false,
-                    "prod" : false
-                },
-                "nice feature" : {
-                    "dev" : true,
-                    "qa" : true,
-                    "prod" : false
-                }
-            }
-        }
+        loaded: false,
+        applications: {}
     };
 
     const composeEnhancers = composeWithDevTools({

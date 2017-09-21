@@ -11,11 +11,11 @@ class AppLayout extends React.Component{
     render(){
         return <div>
 
-            <AppBar title={this.props.togglesLoaded ? this.props.applicationName : 'Loading...'}
-                    onLeftIconButtonTouchTap = {this.props.togglesLoaded ? this.props.handleToggle: ()=>{}} />
+            <AppBar title={this.props.dataLoaded ? this.props.applicationName : 'Loading...'}
+                    onLeftIconButtonTouchTap = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />
 
             {
-                this.props.togglesLoaded ?
+                this.props.dataLoaded ?
                     <div>
                         <Sidebar />
                         <FeatureTogglesPage applicationName={this.props.applicationName}/>
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    togglesLoaded: state.featureToggles.loaded,
+    dataLoaded: state.loaded,
     applicationName : state.activeApplication
 });
 

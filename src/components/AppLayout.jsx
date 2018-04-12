@@ -12,7 +12,7 @@ class AppLayout extends React.Component{
         return <div>
 
             <AppBar title={this.props.dataLoaded ? this.props.applicationName : 'Loading...'}
-                    onLeftIconButtonTouchTap = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />
+                    onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />
 
             {
                 this.props.dataLoaded ?

@@ -5,7 +5,10 @@
 }
 
 .toggle-button > div {
-    padding: 7px 20px;
+    padding: 10px 20px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .toggle-button > .on{
@@ -19,3 +22,11 @@
     background-color: #cdcacd;
     opacity: 0.4;
 }
+
+.missingIcon{
+    vertical-align: middle;
+    height: 1.1em !important;
+    color: #9c0101 !important;
+}
+
+

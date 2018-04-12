@@ -1,5 +1,6 @@
 import {LOAD_DATA, DATA_LOADED} from "../constants";
 import switchApplication from './activeApplication';
+import getApplications from '../services/configProvider';
 
 export const loadData = () => ({
     type : LOAD_DATA
@@ -16,41 +17,7 @@ export const loadDataAsync = () => (async (dispatch, state) => {
 
     dispatch(loadData());
 
-    await wait(2000);
-
-    const data = {
-        web:{
-            "hello web" : {
-                "dev" : true,
-                "qa" : false,
-                "prod" : false
-            }
-        },
-        api:{
-            "hello api" : {
-                "dev" : true,
-                "qa" : false,
-                "prod" : false
-            },
-            "nice feature" : {
-                "dev" : true,
-                "qa" : true,
-                "prod" : false
-            }
-        },
-        database:{
-            "hello database" : {
-                "dev" : true,
-                "qa" : false,
-                "prod" : false
-            },
-            "nice feature" : {
-                "dev" : true,
-                "qa" : true,
-                "prod" : false
-            }
-        }
-    };
+    const data = await getApplications();
 
     dispatch(dataLoaded(data));
 

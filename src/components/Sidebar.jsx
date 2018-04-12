@@ -34,7 +34,6 @@ class Sidebar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    console.info('state', state);
     return {
         open: state.layout.sidebar,
         applications : Object.keys(state.applications)

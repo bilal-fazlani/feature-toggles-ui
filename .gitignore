@@ -1,4 +1,4 @@
 
 /node_modules/
 /.idea/
-**/preferences.js
+**/local.preferences.js

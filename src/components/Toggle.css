@@ -11,17 +11,32 @@
     justify-content: space-between;
 }
 
-.toggle-button > .on{
-    background-color: #00bcd4;
-    color: white;
+@media only screen and (max-width: 600px) {
+    .toggle-button > div {
+        padding: 10px 10px;
 
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.toggle-button > .on{
+    background-color: #2d9a49;
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
 }
 
 .toggle-button > .off{
+    background-color: #ab2828;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+
+.toggle-button > .missing{
     background-color: #cdcacd;
     opacity: 0.4;
 }
+
 
 .missingIcon{
     vertical-align: middle;

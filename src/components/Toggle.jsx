@@ -7,8 +7,11 @@ import {Error} from '@material-ui/icons';
 export class Toggle extends React.Component{
 
     render(){
+
+        const className = this.props.on ? 'on' : this.props.on === undefined ? 'missing' : 'off';
+
         return <div className="toggle-button">
-            <div className={this.props.on? "on" : "off"}>
+            <div className={className}>
                 <span>{this.props.environment}</span>
                 {this.props.on === undefined ? <Error className='missingIcon' />
                      : null}

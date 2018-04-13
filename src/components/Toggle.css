@@ -4,6 +4,16 @@
     margin: 4px;
 }
 
+.toggle-button:first-child > div{
+    border-top-left-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
+}
+
+.toggle-button:last-child > div{
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+}
+
 .toggle-button > div {
     padding: 10px 20px;
 
@@ -14,9 +24,6 @@
 @media only screen and (max-width: 600px) {
     .toggle-button > div {
         padding: 10px 10px;
-
-        display: flex;
-        justify-content: space-between;
     }
 }
 

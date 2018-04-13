@@ -1,11 +1,12 @@
 import * as React from "react";
 import Feature from './Feature';
 import {connect} from "react-redux";
+import './FeatureTogglesPage.css';
 
 class FeatureTogglesPage extends React.Component{
 
     render(){
-        return <div>
+        return <div id='featureTogglesContainer'>
             {this.props.features.map(feature=><Feature key={feature} featureName={feature} />)}
         </div>
     }

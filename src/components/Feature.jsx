@@ -3,23 +3,24 @@ import './Feature.css'
 import Toggle from "./Toggle";
 import * as PropTypes from 'prop-types'
 import {connect} from "react-redux";
+import {Paper} from 'material-ui';
 
 export class Feature extends React.Component {
     render() {
         const environmentNames = Object.keys(this.props.environments);
 
         return <div className="toggle-row">
-            <div className="feature-name ">
-                <span>
+            <Paper zDepth={1}  style={{padding:"0.5em"}}>
+                <div className="feature-name ">
                     {this.props.featureName}
-                </span>
-            </div>
-            <div className="environments">
-                {environmentNames.map(env => <Toggle key={env}
-                                                     environment={env}
-                                                     featureName={this.props.featureName}
-                                                     />)}
-            </div>
+                </div>
+                <div className="environments">
+                    {environmentNames.map(env => <Toggle key={env}
+                                                         environment={env}
+                                                         featureName={this.props.featureName}
+                    />)}
+                </div>
+            </Paper>
         </div>
     }
 }

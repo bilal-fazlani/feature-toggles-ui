@@ -2,7 +2,6 @@ import * as React from "react";
 import './Toggle.css'
 import * as PropTypes from 'prop-types'
 import {connect} from "react-redux";
-import {Error} from '@material-ui/icons';
 
 export class Toggle extends React.Component{
 
@@ -13,8 +12,6 @@ export class Toggle extends React.Component{
         return <div className="toggle-button">
             <div className={className}>
                 <span>{this.props.environment}</span>
-                {this.props.on === undefined ? <Error className='missingIcon' />
-                     : null}
             </div>
         </div>
     }

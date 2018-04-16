@@ -8,7 +8,7 @@ export default class Loader extends React.Component{
         }}>
             <CircularProgress size={100}
                               thickness={10}
-                              style={{marginLeft: '50%', marginTop: '20%'}}
+                              style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}
             />
         </div>;
     }

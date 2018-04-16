@@ -1,0 +1,13 @@
+#empty-screen{
+ text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#config-logo{
+    height: 90vh;
+    max-height: 20em;
+    opacity: 0.1;
+    margin-top: 15vh;
+}

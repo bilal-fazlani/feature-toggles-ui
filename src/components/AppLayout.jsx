@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
 import {Route, Switch, withRouter} from 'react-router-dom';
 import {loadDataAsync} from '../actionCreators/featureToggles';
+import EmptyScreen from './EmptyScreen';
 
 class AppLayout extends React.Component{
 
@@ -15,24 +16,26 @@ class AppLayout extends React.Component{
     }
 
     render(){
-        return <div>
+        return <div id='app-layout'>
 
-            <Route exact={true} path="/" render={({match}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
-                                                         onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
+            <div id='header'>
+                <Route exact={true} path="/" render={({match}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
+                                                                          onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
 
-            <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
-                                                                      onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
+                <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
+                                                                             onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
+            </div>
 
             {
                 this.props.dataLoaded ?
-                    <div>
+                    <div id='main'>
                         <Sidebar />
                         <Switch>
                             <Route path='/:applicationName'
                                    render={({match}) => <FeatureTogglesPage applicationName={match.params.applicationName}/>}
                             />
 
-                            <Route path='/' render={() => <h1>APP SELECTOR</h1>} />
+                            <Route path='/' render={() => <EmptyScreen />} />
                         </Switch>
                     </div>
                  :

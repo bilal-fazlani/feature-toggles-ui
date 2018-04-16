@@ -28,7 +28,6 @@ class AppLayout extends React.Component{
             {
                 this.props.dataLoaded ?
                     <div id='main'>
-
                         <Route exact={true} path='/' render={({}) => <Sidebar />} />
                         <Route path='/:applicationName' render={({match}) => <Sidebar selectedApplication={match.params.applicationName} />} />
 

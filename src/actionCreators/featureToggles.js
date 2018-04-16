@@ -19,7 +19,7 @@ export const loadDataAsync = () => (async (dispatch, state) => {
 
     dispatch(dataLoaded(data));
 
-    const firstApplicationName = Object.keys(data)[0];
-
-    history.push(firstApplicationName);
+    // const firstApplicationName = Object.keys(data)[0];
+    //
+    // history.push(firstApplicationName);
 });

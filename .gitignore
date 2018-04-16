@@ -1,6 +1,5 @@
-
 /node_modules/
 /.idea/
-**/local.preferences.js
+**/local.preferences.json
 /build
 recordedsession

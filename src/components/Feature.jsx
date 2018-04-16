@@ -17,6 +17,7 @@ export class Feature extends React.Component {
                 <div className="environments">
                     {environmentNames.map(env => <Toggle key={env}
                                                          environment={env}
+                                                         applicationName={this.props.applicationName}
                                                          featureName={this.props.featureName}
                     />)}
                 </div>
@@ -31,7 +32,7 @@ Feature.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 
-    const environmentValues = state.applications[state.activeApplication][ownProps.featureName];
+    const environmentValues = state.applications[ownProps.applicationName][ownProps.featureName];
 
     return {
         environments: environmentValues

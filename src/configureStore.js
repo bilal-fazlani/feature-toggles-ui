@@ -2,8 +2,9 @@ import {applyMiddleware, createStore} from "redux";
 import rootReducer from "./reducers";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 
-export default function configureStore() {
+export default function configureStore(history) {
 
     const initialState = {
         layout: {
@@ -18,9 +19,9 @@ export default function configureStore() {
     });
 
     const store = createStore(
-        rootReducer,
+        connectRouter(history)(rootReducer),
         initialState,
-        composeEnhancers(applyMiddleware(thunkMiddleware))
+        composeEnhancers(applyMiddleware(routerMiddleware(history), thunkMiddleware))
         //window.devToolsExtension ? window.devToolsExtension() : undefined
     );
 

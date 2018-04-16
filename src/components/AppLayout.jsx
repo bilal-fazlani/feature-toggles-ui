@@ -5,20 +5,35 @@ import {toggleSidebar} from "../actionCreators/sidebar";
 import {connect} from "react-redux";
 import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
+import {Route, Switch, withRouter} from 'react-router-dom';
+import {loadDataAsync} from '../actionCreators/featureToggles';
 
 class AppLayout extends React.Component{
+
+    componentDidMount() {
+        this.props.loadDataAsync();
+    }
 
     render(){
         return <div>
 
-            <AppBar title={this.props.dataLoaded ? this.props.applicationName : 'Loading...'}
-                    onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />
+            <Route exact={true} path="/" render={({match}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
+                                                         onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
+
+            <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
+                                                                      onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
 
             {
                 this.props.dataLoaded ?
                     <div>
                         <Sidebar />
-                        <FeatureTogglesPage applicationName={this.props.applicationName}/>
+                        <Switch>
+                            <Route path='/:applicationName'
+                                   render={({match}) => <FeatureTogglesPage applicationName={match.params.applicationName}/>}
+                            />
+
+                            <Route path='/' render={() => <h1>APP SELECTOR</h1>} />
+                        </Switch>
                     </div>
                  :
                 <Loader />
@@ -28,12 +43,12 @@ class AppLayout extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    handleToggle : () => dispatch(toggleSidebar())
+    handleToggle : () => dispatch(toggleSidebar()),
+    loadDataAsync: () => dispatch(loadDataAsync())
 });
 
 const mapStateToProps = (state) => ({
     dataLoaded: state.loaded,
-    applicationName : state.activeApplication
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppLayout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppLayout));

@@ -2,19 +2,26 @@ import * as React from "react";
 import Feature from './Feature';
 import {connect} from "react-redux";
 import './FeatureTogglesPage.css';
+import ErrorPage from './ErrorPage';
 
 class FeatureTogglesPage extends React.Component{
 
     render(){
-        return <div id='featureTogglesContainer'>
-            {this.props.features.map(feature=><Feature key={feature} featureName={feature} />)}
-        </div>
+        if(this.props.invalidPage){
+            return <ErrorPage />
+        }
+        else{
+            return <div id='featureTogglesContainer'>
+                {this.props.features.map(feature=><Feature key={feature} featureName={feature} applicationName={this.props.applicationName} />)}
+            </div>
+        }
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     return {
-        features: state.activeApplication ? Object.keys(state.applications[state.activeApplication]) : []
+        features: state.applications[ownProps.applicationName] ? Object.keys(state.applications[ownProps.applicationName]) : [],
+        invalidPage: state.applications[ownProps.applicationName] === undefined
     }
 }
 

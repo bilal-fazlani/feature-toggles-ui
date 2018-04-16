@@ -8,3 +8,7 @@ body {
   font-family: 'Roboto', sans-serif;
   user-select: none;
 }
+
+.plainLink{
+  text-decoration: none;
+}

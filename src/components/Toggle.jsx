@@ -24,7 +24,7 @@ Toggle.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        on : state.applications[state.activeApplication][ownProps.featureName][ownProps.environment]
+        on : state.applications[ownProps.applicationName][ownProps.featureName][ownProps.environment]
     }
 }
 

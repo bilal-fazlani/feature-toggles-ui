@@ -7,7 +7,6 @@ import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
 import {Route, Switch, withRouter} from 'react-router-dom';
 import {loadDataAsync} from '../actionCreators/featureToggles';
-import EmptyScreen from './EmptyScreen';
 
 class AppLayout extends React.Component{
 
@@ -38,7 +37,7 @@ class AppLayout extends React.Component{
                                    render={({match}) => <FeatureTogglesPage applicationName={match.params.applicationName}/>}
                             />
 
-                            <Route path='/' render={() => <EmptyScreen />} />
+                            <Route path='/' render={() => <FeatureTogglesPage />} />
                         </Switch>
                     </div>
                  :

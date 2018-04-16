@@ -1,5 +1,6 @@
 import {LOAD_DATA, DATA_LOADED} from "../constants";
 import getApplications from '../services/configProvider';
+import {history} from '../history';
 
 export const loadData = () => ({
     type : LOAD_DATA
@@ -17,4 +18,8 @@ export const loadDataAsync = () => (async (dispatch, state) => {
     const data = await getApplications();
 
     dispatch(dataLoaded(data));
+
+    const firstApplicationName = Object.keys(data)[0];
+
+    history.push(firstApplicationName);
 });

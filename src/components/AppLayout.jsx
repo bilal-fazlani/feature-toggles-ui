@@ -19,7 +19,7 @@ class AppLayout extends React.Component{
         return <div id='app-layout'>
 
             <div id='header'>
-                <Route exact={true} path="/" render={({match}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
+                <Route exact={true} path="/" render={({}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
                                                                           onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
 
                 <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
@@ -29,7 +29,10 @@ class AppLayout extends React.Component{
             {
                 this.props.dataLoaded ?
                     <div id='main'>
-                        <Sidebar />
+
+                        <Route exact={true} path='/' render={({}) => <Sidebar />} />
+                        <Route path='/:applicationName' render={({match}) => <Sidebar selectedApplication={match.params.applicationName} />} />
+
                         <Switch>
                             <Route path='/:applicationName'
                                    render={({match}) => <FeatureTogglesPage applicationName={match.params.applicationName}/>}

@@ -18,6 +18,8 @@ class Sidebar extends React.Component {
     }
 
     render() {
+
+        console.info("selected app: ", this.props.selectedApplication);
         return <div>
             <Drawer
                 docked={false}
@@ -27,11 +29,13 @@ class Sidebar extends React.Component {
                 {
                     <div id='sidebar'>
                         <div id='toggle-image-wrapper'>
-                            <img id='feature-toggle-image' src="assets/sidebar-design.jpg   "></img>
+                            <img id='feature-toggle-image' src="assets/sidebar-design.jpg"></img>
                         </div>
                         {this.props.applications.map((appName) => (
-                            <Link onClick={this.onLinkClick} to={`${appName}`} className='plainLink'>
-                                <MenuItem key={appName}>
+                            <Link onClick={this.onLinkClick} to={`${appName}`}
+                                  className={this.props.selectedApplication === appName? "plainLink activeApp" : "plainLink"}
+                                  key={appName}>
+                                <MenuItem>
                                     {appName}
                                 </MenuItem>
                             </Link>

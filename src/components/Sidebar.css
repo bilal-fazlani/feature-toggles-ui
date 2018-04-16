@@ -5,3 +5,7 @@
 #feature-toggle-image{
     width: 100%;
 }
+
+.activeApp > div{
+    background-color: rgb(0, 188, 212)
+}

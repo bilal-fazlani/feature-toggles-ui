@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
 import {Route, Switch, withRouter} from 'react-router-dom';
 import {loadDataAsync} from '../actionCreators/featureToggles';
+import Header from './Header';
 
 class AppLayout extends React.Component{
 
@@ -17,13 +18,7 @@ class AppLayout extends React.Component{
     render(){
         return <div id='app-layout'>
 
-            <div id='header'>
-                <Route exact={true} path="/" render={({}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
-                                                                          onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
-
-                <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
-                                                                             onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
-            </div>
+            <Header />
 
             {
                 this.props.dataLoaded ?
@@ -47,7 +42,6 @@ class AppLayout extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    handleToggle : () => dispatch(toggleSidebar()),
     loadDataAsync: () => dispatch(loadDataAsync())
 });
 

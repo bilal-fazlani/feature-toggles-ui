@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import preferences from './preferences.json';
+import preferences from './config.json';
 
 async function getToggles(env, app){
     const response = await fetch(`${preferences.springConfigServerUrl}${app}/${env}`);

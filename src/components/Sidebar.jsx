@@ -18,8 +18,6 @@ class Sidebar extends React.Component {
     }
 
     render() {
-
-        console.info("selected app: ", this.props.selectedApplication);
         return <div>
             <Drawer
                 docked={false}

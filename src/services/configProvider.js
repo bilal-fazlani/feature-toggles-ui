@@ -1,8 +1,8 @@
 import _ from 'lodash'
-import preferences from './config.json';
+import configService from './configService';
 
 async function getToggles(env, app){
-    const response = await fetch(`${preferences.springConfigServerUrl}${app}/${env}`);
+    const response = await fetch(`${configService.configs.springConfigServerUrl}${app}/${env}`);
 
     const responseJson = await response.json();
 
@@ -26,8 +26,8 @@ async function getAllToggles(){
 
     const promises = [];
 
-    preferences.envs.forEach(env => {
-        preferences.apps.forEach(app => {
+    configService.configs.envs.forEach(env => {
+        configService.configs.apps.forEach(app => {
             const config = getToggles(env, app);
             if(config != null)
                 promises.push(config);
@@ -43,7 +43,7 @@ function transformData(configs){
 
     const applications = {};
 
-    preferences.apps.forEach(appName => {
+    configService.configs.apps.forEach(appName => {
 
         applications[appName] = {};
 
@@ -56,7 +56,7 @@ function transformData(configs){
         uniqueToggleNames.forEach(toggleName => {
             applications[appName][toggleName] = {};
 
-            preferences.envs.forEach(env => {
+            configService.configs.envs.forEach(env => {
                 const app = apps.filter(a=> a.app == appName && a.env == env)[0];
                 if(app)
                     applications[appName][toggleName][env] = app.toggles[toggleName];
@@ -67,6 +67,7 @@ function transformData(configs){
 }
 
 export default async function getApplications() {
+    await configService.init();
     const toggles = await getAllToggles();
     const transformedToggles = transformData(toggles);
     return transformedToggles;

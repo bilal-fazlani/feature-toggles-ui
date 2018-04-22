@@ -16,3 +16,5 @@ before_install:
 
 script:
 - docker build -t bilalfazlani/feature-toggles-ui:latest .
+- docker tag bilalfazlani/feature-toggles-ui:latest bilalfazlani/feature-toggles-ui:$TRAVIS_BUILD_NUMBER
+- docker images | grep bilalfazlani/feature-toggles-ui

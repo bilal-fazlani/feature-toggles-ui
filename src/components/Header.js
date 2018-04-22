@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 class Header extends React.Component{
     render(){
         return <div id='header'>
-            <Route exact={true} path="/" render={({}) => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
+            <Route exact={true} path="/" render={() => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
                                                                  onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />
             <Route path="/:applicationName" render={({match}) => <AppBar title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
                                                                          onLeftIconButtonClick = {this.props.dataLoaded ? this.props.handleToggle: ()=>{}} />} />

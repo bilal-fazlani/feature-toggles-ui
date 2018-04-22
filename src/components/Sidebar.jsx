@@ -27,7 +27,7 @@ class Sidebar extends React.Component {
                 {
                     <div id='sidebar'>
                         <div id='toggle-image-wrapper'>
-                            <img id='feature-toggle-image' src="assets/sidebar-design.jpg"></img>
+                            <img alt='design' id='feature-toggle-image' src="assets/sidebar-design.jpg"></img>
                         </div>
                         {this.props.applications.map((appName) => (
                             <Link onClick={this.onLinkClick} to={`${appName}`}

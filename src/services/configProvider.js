@@ -47,7 +47,7 @@ function transformData(configs){
 
         applications[appName] = {};
 
-        const apps = configs.filter(x=> x != null && x.app == appName);
+        const apps = configs.filter(x=> x !== null && x.app === appName);
 
         const toggleNames = apps.map(a=>Object.keys(a.toggles));
 
@@ -57,7 +57,7 @@ function transformData(configs){
             applications[appName][toggleName] = {};
 
             configService.configs.envs.forEach(env => {
-                const app = apps.filter(a=> a.app == appName && a.env == env)[0];
+                const app = apps.filter(a=> a.app === appName && a.env === env)[0];
                 if(app)
                     applications[appName][toggleName][env] = app.toggles[toggleName];
             });

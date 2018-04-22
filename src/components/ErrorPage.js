@@ -5,7 +5,7 @@ import './ErrorPage.css';
 export default class ErrorPage extends Component{
     render(){
         return <div id='error-page'>
-            <img src="assets/error-screen.svg" />
+            <img alt='error' src="assets/error-screen.svg" />
         </div>
     }
 }

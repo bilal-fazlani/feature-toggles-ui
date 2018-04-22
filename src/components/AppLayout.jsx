@@ -1,7 +1,5 @@
 import * as React from "react";
-import {AppBar} from "material-ui";
 import Sidebar from "./Sidebar";
-import {toggleSidebar} from "../actionCreators/sidebar";
 import {connect} from "react-redux";
 import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
@@ -23,7 +21,7 @@ class AppLayout extends React.Component{
             {
                 this.props.dataLoaded ?
                     <div id='main'>
-                        <Route exact={true} path='/' render={({}) => <Sidebar />} />
+                        <Route exact={true} path='/' render={() => <Sidebar />} />
                         <Route path='/:applicationName' render={({match}) => <Sidebar selectedApplication={match.params.applicationName} />} />
 
                         <Switch>

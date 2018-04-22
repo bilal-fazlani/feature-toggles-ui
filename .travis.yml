@@ -16,5 +16,12 @@ before_install:
 
 script:
 - docker build -t bilalfazlani/feature-toggles-ui:latest .
-- docker tag bilalfazlani/feature-toggles-ui:latest bilalfazlani/feature-toggles-ui:$TRAVIS_BUILD_NUMBER
+- docker tag bilalfazlani/feature-toggles-ui:latest bilalfazlani/feature-toggles-ui:0.0.$TRAVIS_BUILD_NUMBER
 - docker images | grep bilalfazlani/feature-toggles-ui
+
+deploy:
+  # deploy to dockerhub from release branch
+  - provider: script
+    script: bash deploy.sh
+    on:
+      branch: release

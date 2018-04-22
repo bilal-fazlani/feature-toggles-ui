@@ -1,7 +1,18 @@
-language: node_js
-node_js:
-  - "7"
-cache:
-  yarn: true
-  directories:
-    - node_modules
+# language: node_js
+# node_js:
+#   - "7"
+# cache:
+#   yarn: true
+#   directories:
+#     - node_modules
+sudo: required
+
+services:
+  - docker
+
+before_install:
+- docker pull node:alpine
+- docker pull nginx:1.13.12-alpine
+
+script:
+- docker build -t bilalfazlani/feature-toggles-ui:latest

@@ -15,4 +15,4 @@ before_install:
 - docker pull nginx:1.13.12-alpine
 
 script:
-- docker build -t bilalfazlani/feature-toggles-ui:latest
+- docker build -t bilalfazlani/feature-toggles-ui:latest .

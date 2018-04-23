@@ -15,7 +15,7 @@ async function getToggles(env, app){
     _.each(configs, (v, k) => {
         if(k.startsWith('toggle.')){
             const key = k.substring(7, k.length);
-            toggles[key] = v === "true";
+            toggles[key] = ((v === "true") ||  (v === true));
         }
     });
 

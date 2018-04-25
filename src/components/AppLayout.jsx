@@ -5,7 +5,7 @@ import Loader from "./Loader";
 import FeatureTogglesPage from "./FeatureTogglesPage";
 import {Route, Switch, withRouter} from 'react-router-dom';
 import {loadDataAsync} from '../actionCreators/featureToggles';
-import Header from './Header';
+import Header from './Header/Header';
 
 class AppLayout extends React.Component{
 
@@ -21,8 +21,7 @@ class AppLayout extends React.Component{
             {
                 this.props.dataLoaded ?
                     <div id='main'>
-                        <Route exact={true} path='/' render={() => <Sidebar />} />
-                        <Route path='/:applicationName' render={({match}) => <Sidebar selectedApplication={match.params.applicationName} />} />
+                        <Route exact={true} path='/:applicationName' render={({match}) => <Sidebar selectedApplication={match.params.applicationName} />} />
 
                         <Switch>
                             <Route path='/:applicationName'

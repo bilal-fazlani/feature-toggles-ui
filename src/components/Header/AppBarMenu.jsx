@@ -1,16 +1,14 @@
-import {Route, withRouter} from 'react-router-dom';
-import {AppBar, Dialog, FlatButton} from 'material-ui';
 import React from 'react';
-import {toggleSidebar} from '../actionCreators/sidebar';
-import {connect} from 'react-redux';
+import {Dialog, FlatButton, IconButton, IconMenu, MenuItem} from 'material-ui';
+import {MoreVert} from '@material-ui/icons';
 
-class Header extends React.Component {
+export default class AppBarMenu extends React.Component {
 
     state = {
         aboutToolOpen: false
     };
 
-    handleOpen = () => {
+    handleOpenAbout = () => {
         this.setState({aboutToolOpen: true});
     };
 
@@ -28,19 +26,19 @@ class Header extends React.Component {
             />
         ];
 
-        return <div id='header'>
-            <Route exact={true} path="/"
-                   render={() => <AppBar title={this.props.dataLoaded ? 'Please select an app' : 'Loading...'}
-                                         onLeftIconButtonClick={this.props.dataLoaded ? this.props.handleToggle : () => {
-                                         }}
-                                         iconElementRight={<FlatButton label="About" onClick={this.handleOpen}/>}/>}
-            />
-            <Route path="/:applicationName" render={({match}) => <AppBar
-                title={this.props.dataLoaded ? match.params.applicationName : 'Loading...'}
-                onLeftIconButtonClick={this.props.dataLoaded ? this.props.handleToggle : () => {
-                }}
-                iconElementRight={<FlatButton label="About" onClick={this.handleOpen}/>}/>}
-            />
+        return <div>
+            <IconMenu
+                iconButtonElement={
+                    <IconButton><MoreVert color={'white'}/></IconButton>
+                }
+                targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            >
+                <MenuItem primaryText="About feature-toggles-ui" onClick={() => this.handleOpenAbout()}/>
+                <MenuItem primaryText="About developer"/>
+                <MenuItem primaryText="Configurations"/>
+            </IconMenu>
+
             <Dialog
                 title="About feature-toggles-ui"
                 actions={modalActions}
@@ -64,15 +62,6 @@ class Header extends React.Component {
                 </div>
             </Dialog>
         </div>
+
     }
 }
-
-const mapDispatchToProps = (dispatch) => ({
-    handleToggle: () => dispatch(toggleSidebar())
-});
-
-const mapStateToProps = (state) => ({
-    dataLoaded: state.loaded,
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

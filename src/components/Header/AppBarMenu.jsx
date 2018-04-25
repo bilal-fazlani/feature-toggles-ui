@@ -1,12 +1,13 @@
 import React from 'react';
 import {Dialog, FlatButton, IconButton, IconMenu, MenuItem} from 'material-ui';
 import {MoreVert} from '@material-ui/icons';
+import configService from '../../services/configService';
+import JSONPretty from 'react-json-pretty';
 
 export default class AppBarMenu extends React.Component {
 
     state = {
         aboutToolOpen: false,
-        aboutDeveloperOpen: false,
         configurationsOpen: false
     };
 
@@ -14,16 +15,12 @@ export default class AppBarMenu extends React.Component {
         this.setState({aboutToolOpen: true});
     };
 
-    handleOpenDeveloperAbout = () => {
-        this.setState({aboutDeveloperOpen: true});
-    };
-
     handleOpenConfig = () => {
         this.setState({configurationsOpen: true});
     };
 
     handleClose = () => {
-        this.setState({aboutToolOpen: false, aboutDeveloperOpen: false, configurationsOpen: false});
+        this.setState({aboutToolOpen: false, configurationsOpen: false});
     };
 
     render() {
@@ -33,6 +30,7 @@ export default class AppBarMenu extends React.Component {
                 label="Close"
                 primary={true}
                 onClick={this.handleClose}
+                keyboardFocused={true}
             />
         ];
 
@@ -45,8 +43,7 @@ export default class AppBarMenu extends React.Component {
                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
                 <MenuItem primaryText="About feature-toggles-ui" onClick={this.handleOpenAbout}/>
-                <MenuItem primaryText="About developer" onClick={this.handleOpenDeveloperAbout}/>
-                <MenuItem primaryText="Configurations" onClick={this.handleOpenConfig}/>
+                <MenuItem primaryText="Configuration" onClick={this.handleOpenConfig}/>
             </IconMenu>
 
             <Dialog
@@ -54,6 +51,7 @@ export default class AppBarMenu extends React.Component {
                 actions={modalActions}
                 modal={false}
                 open={this.state.aboutToolOpen}
+                autoScrollBodyContent={true}
                 onRequestClose={this.handleClose}
             >
                 <div>
@@ -63,29 +61,32 @@ export default class AppBarMenu extends React.Component {
                 <br/>
                 <div>
                     Base docker image is deployed on <a
+                    rel={'help'}
                     target={'_blank'}
                     href='https://hub.docker.com/r/bilalfazlani/feature-toggles-ui/'>docker hub</a>.
                 </div>
                 <br/>
                 <div>
-                    Code is hosted on <a target={'_blank'} href='https://github.com/bilal-fazlani/feature-toggles-ui'>github</a>.
+                    Source code is available on <a target={'_blank'} rel={'help'} href='https://github.com/bilal-fazlani/feature-toggles-ui'>github</a>.
                     Please see readme documentation for more information/instructions.
-                </div>
-            </Dialog>
-
-            <Dialog
-                title="About developer"
-                actions={modalActions}
-                modal={false}
-                open={this.state.aboutDeveloperOpen}
-                onRequestClose={this.handleClose}
-            >
-                <div>
-                    Developed by <a target='_blank' href='https://in.linkedin.com/in/bilalfazlani'>Bilal Fazlani</a>
                 </div>
                 <br/>
                 <div>
-                    <a href={'mailto:bilal.m.fazlani@gmail.com'}>bilal.m.fazlani@gmail.com</a>
+                    Developed by <a target='_blank' rel={'author'} href='https://in.linkedin.com/in/bilalfazlani'>Bilal Fazlani</a> | <a href={'mailto:bilal.m.fazlani@gmail.com'}>bilal.m.fazlani@gmail.com</a>
+                </div>
+
+            </Dialog>
+
+            <Dialog
+                title="Configuration"
+                actions={modalActions}
+                modal={false}
+                open={this.state.configurationsOpen}
+                autoScrollBodyContent={true}
+                onRequestClose={this.handleClose}
+            >
+                <div>
+                    <JSONPretty id="configs" json={configService.configs}></JSONPretty>
                 </div>
             </Dialog>
         </div>

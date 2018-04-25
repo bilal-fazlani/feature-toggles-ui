@@ -5,15 +5,25 @@ import {MoreVert} from '@material-ui/icons';
 export default class AppBarMenu extends React.Component {
 
     state = {
-        aboutToolOpen: false
+        aboutToolOpen: false,
+        aboutDeveloperOpen: false,
+        configurationsOpen: false
     };
 
     handleOpenAbout = () => {
         this.setState({aboutToolOpen: true});
     };
 
+    handleOpenDeveloperAbout = () => {
+        this.setState({aboutDeveloperOpen: true});
+    };
+
+    handleOpenConfig = () => {
+        this.setState({configurationsOpen: true});
+    };
+
     handleClose = () => {
-        this.setState({aboutToolOpen: false});
+        this.setState({aboutToolOpen: false, aboutDeveloperOpen: false, configurationsOpen: false});
     };
 
     render() {
@@ -34,9 +44,9 @@ export default class AppBarMenu extends React.Component {
                 targetOrigin={{horizontal: 'right', vertical: 'top'}}
                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-                <MenuItem primaryText="About feature-toggles-ui" onClick={() => this.handleOpenAbout()}/>
-                <MenuItem primaryText="About developer"/>
-                <MenuItem primaryText="Configurations"/>
+                <MenuItem primaryText="About feature-toggles-ui" onClick={this.handleOpenAbout}/>
+                <MenuItem primaryText="About developer" onClick={this.handleOpenDeveloperAbout}/>
+                <MenuItem primaryText="Configurations" onClick={this.handleOpenConfig}/>
             </IconMenu>
 
             <Dialog
@@ -53,12 +63,29 @@ export default class AppBarMenu extends React.Component {
                 <br/>
                 <div>
                     Base docker image is deployed on <a
+                    target={'_blank'}
                     href='https://hub.docker.com/r/bilalfazlani/feature-toggles-ui/'>docker hub</a>.
                 </div>
                 <br/>
                 <div>
-                    Code is hosted on <a href='https://github.com/bilal-fazlani/feature-toggles-ui'>github</a>.
+                    Code is hosted on <a target={'_blank'} href='https://github.com/bilal-fazlani/feature-toggles-ui'>github</a>.
                     Please see readme documentation for more information/instructions.
+                </div>
+            </Dialog>
+
+            <Dialog
+                title="About developer"
+                actions={modalActions}
+                modal={false}
+                open={this.state.aboutDeveloperOpen}
+                onRequestClose={this.handleClose}
+            >
+                <div>
+                    Developed by <a target='_blank' href='https://in.linkedin.com/in/bilalfazlani'>Bilal Fazlani</a>
+                </div>
+                <br/>
+                <div>
+                    <a href={'mailto:bilal.m.fazlani@gmail.com'}>bilal.m.fazlani@gmail.com</a>
                 </div>
             </Dialog>
         </div>

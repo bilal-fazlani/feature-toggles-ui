@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import './Sidebar.css';
 
 class Sidebar extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.onLinkClick = this.onLinkClick.bind(this);
@@ -22,24 +22,22 @@ class Sidebar extends React.Component {
                 docked={false}
                 width={300}
                 open={this.props.open}
-                onRequestChange={(open) => this.props.setSidebar(open)}>
-                {
-                    <div id='sidebar'>
-                        <div id='toggle-image-wrapper'>
-                            <img alt='design' id='feature-toggle-image' src="assets/sidebar-design.jpg"></img>
-                        </div>
-                        {this.props.applications.map((appName) => (
-                            <Link onClick={this.onLinkClick} to={`${appName}`}
-                                  className={this.props.selectedApplication === appName? "plainLink activeApp" : "plainLink"}
-                                  key={appName}>
-                                <MenuItem>
-                                    {appName}
-                                </MenuItem>
-                            </Link>
-                        ))
-                        }
+                onClose={() => this.props.setSidebar(false)}>
+                <div id='sidebar'>
+                    <div id='toggle-image-wrapper'>
+                        <img alt='design' id='feature-toggle-image' src="assets/sidebar-design.jpg"></img>
                     </div>
-                }
+                    {this.props.applications.map((appName) => (
+                        <Link onClick={this.onLinkClick} to={`${appName}`}
+                              className={this.props.selectedApplication === appName ? "plainLink activeApp" : "plainLink"}
+                              key={appName}>
+                            <MenuItem>
+                                {appName}
+                            </MenuItem>
+                        </Link>
+                    ))
+                    }
+                </div>
             </Drawer>
         </div>
     }

@@ -1,4 +1,4 @@
-import {Drawer, ListItemText, MenuItem, MenuList, withStyles} from "material-ui";
+import {Drawer, MenuItem, MenuList, withStyles} from "material-ui";
 import * as React from "react";
 import {connect} from "react-redux";
 import {closeSidebar, setSidebar} from "../actionCreators/sidebar";

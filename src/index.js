@@ -15,7 +15,14 @@ import {history} from './history';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#1FBCD3',
+            contrastText: '#FFFFFF'
+        }
+    },
+});
 
 ReactDOM.render(
     <Provider store={configureStore(history)}>

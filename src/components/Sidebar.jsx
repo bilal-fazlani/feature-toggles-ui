@@ -29,9 +29,9 @@ class Sidebar extends React.Component {
                     </div>
                     {this.props.applications.map((appName) => (
                         <Link onClick={this.onLinkClick} to={`${appName}`}
-                              className={this.props.selectedApplication === appName ? "plainLink activeApp" : "plainLink"}
+                              className={"plainLink"}
                               key={appName}>
-                            <MenuItem>
+                            <MenuItem selected={this.props.selectedApplication === appName}>
                                 {appName}
                             </MenuItem>
                         </Link>

@@ -5,11 +5,3 @@
 #feature-toggle-image{
     width: 18em;
 }
-
-.activeApp > div{
-    background-color: rgb(0, 188, 212)
-}
-
-.activeApp div{
-    color: white;
-}

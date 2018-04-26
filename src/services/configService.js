@@ -7,9 +7,7 @@ class ConfigService{
     async init(){
         if(!this.initialized){
             const response = await fetch('/config.json');
-            const json = await response.json();
-            this.configs = json;
-            console.info(json);
+            this.configs = await response.json();
         }
     }
 }

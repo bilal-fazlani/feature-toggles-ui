@@ -6,7 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 import configureStore from "./configureStore";
 import {ConnectedRouter} from 'connected-react-router';
-import {MuiThemeProvider} from 'material-ui';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui';
 import AppLayout from './components/AppLayout';
 import {history} from './history';
 
@@ -15,10 +15,12 @@ import {history} from './history';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
+const theme = createMuiTheme();
+
 ReactDOM.render(
     <Provider store={configureStore(history)}>
         <ConnectedRouter history={history}>
-            <MuiThemeProvider>
+            <MuiThemeProvider theme={theme} >
                 <AppLayout/>
             </MuiThemeProvider>
         </ConnectedRouter>

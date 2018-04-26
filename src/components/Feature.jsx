@@ -10,7 +10,7 @@ export class Feature extends React.Component {
         const environmentNames = Object.keys(this.props.environments);
 
         return <div className="toggle-row">
-            <Paper zDepth={1}  style={{padding:"0.5em"}}>
+            <Paper style={{padding:"0.5em"}}>
                 <div className="feature-name ">
                     {this.props.featureName}
                 </div>

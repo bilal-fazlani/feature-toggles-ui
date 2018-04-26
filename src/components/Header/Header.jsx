@@ -1,17 +1,16 @@
 import {Route} from 'react-router-dom';
 import React from 'react';
-import RootAppBar from './RootAppBar';
-import MainAppBar from './MainAppBar';
+import ApplicationBar from './ApplicationBar';
 
 export default class Header extends React.Component {
     render() {
 
         return <div id='header'>
             <Route exact={true} path="/"
-                   render={() => <RootAppBar />}
+                   render={() => <ApplicationBar />}
             />
             <Route path="/:applicationName"
-                   render={({match}) => <MainAppBar applicationName={match.params.applicationName}/>}
+                   render={({match}) => <ApplicationBar applicationName={match.params.applicationName}/>}
             />
         </div>
     }
